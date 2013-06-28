@@ -17,6 +17,7 @@ import com.googlecode.svntask.command.Status;
 import com.googlecode.svntask.command.Switch;
 import com.googlecode.svntask.command.Unlock;
 import com.googlecode.svntask.command.Update;
+import com.googlecode.svntask.command.Copyrevision;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.tmatesoft.svn.core.auth.ISVNAuthenticationManager;
@@ -53,6 +54,17 @@ public class SvnTask extends Task
 	/** */
 	public void setUsername(String user){
 		this.user = user;
+	}
+
+
+	/** */
+	public String getPassword(){
+		return this.password;
+	}
+
+	/** */
+	public String getUsername(){
+		return this.user;
 	}
 
 	/** */
@@ -133,6 +145,12 @@ public class SvnTask extends Task
 	{
 		this.addCommand(checkout);
 	}
+	
+	/** */
+	public void addCopyrevision(Copyrevision copyrevision)
+	{
+		this.addCommand(copyrevision);
+	}
 
 	/** */
 	private void addCommand(Command command)
@@ -140,6 +158,7 @@ public class SvnTask extends Task
 		command.setTask(this);
 		this.commands.add(command);
 	}
+
 
 	/** */
 	public boolean isFailonerror()
