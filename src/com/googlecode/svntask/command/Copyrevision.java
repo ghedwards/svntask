@@ -86,6 +86,7 @@ public class Copyrevision extends Command
 
         this.getProject().setProperty(this.logProperty, logBuffer.toString());
 
+        repository.closeSession();
 
     }
 

@@ -38,7 +38,7 @@ public class SvnTask extends Task
 	private final List<Command> commands = new ArrayList<Command>();
 
 	/** */
-	private boolean failonerror = false;
+	private boolean failonerror = true;
 
 	/** */
 	private SVNClientManager manager = null;
@@ -210,6 +210,8 @@ public class SvnTask extends Task
 			{
 				command.executeCommand();
 			}
+
+			this.manager.dispose();
 		}
 		catch (Exception e)
 		{
